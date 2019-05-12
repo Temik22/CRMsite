@@ -5,7 +5,13 @@ window.onload = function () {
     }
 
     let button = document.getElementById('form-button');
-    button.addEventListener('click', function () { auth() });
+    button.addEventListener('click', function () {
+        for ( let el of inputs){
+            checkInput(el);
+        }
+        auth(inputs);
+        getImage();
+    });
 
 };
 
@@ -32,14 +38,42 @@ function checkInput(input) {
 }
 
 
-function auth() {
-    let data = document.getElementsByTagName('input');
+function auth(inputs) {
     let temp = [];
-    for (let el in data) {
+    for (let el of inputs) {
         if (!el.classList.contains('is-invalid') && el.value !== '') {
             temp.push(el.value);
-        }
+        } else return;
     }
 
-    console.log(temp)
+    let url = '/auth/checkUser/' + temp[0] + '/' + temp[1];
+
+    fetch(url)
+        .then(
+            function (response) {
+                if (response.status !== 200){
+                    console.log('error status:' + response.status);
+                } else {
+                    response.json().then(function (data) {
+                        console.log(data);
+                    })
+                }
+            }
+        )
+
+}
+
+function getImage() {
+    fetch('https://dog.ceo/api/breeds/image/random')
+        .then(
+            function (response) {
+                if (response.status !== 200){
+                    console.log('answer.status:' + response.status);
+                }
+
+                response.json().then( function (data) {
+                    console.log(data.message);
+                });
+            }
+        )
 }
