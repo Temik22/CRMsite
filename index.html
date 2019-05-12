@@ -5,6 +5,8 @@
     <title>Login page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="main.js"></script>
 </head>
 <body>
 <script src="login.js"></script>
@@ -16,10 +18,10 @@
             <div class="container d-flex flex-column align-content-center mt-4">
                 <label class="pl-1" for="login-email">Login</label>
                 <input class="form-control border-top-0 border-left-0 border-right-0 border-dark bg-light"
-                       id="login-email" placeholder="gibe me your login, ma boi" data-regexp="^[a-zA-Z]+$"
-                       data-status="true">
+                       id="login-email" placeholder="Enter your email"
+                       data-regexp="^[a-zA-z]+@[a-z]+.[a-z]{1,4}$" data-status="true">
                 <div class="invalid-feedback">
-                    Your login must contain character only
+                    Your login must be an E-Mail
                 </div>
             </div>
             <div class="container d-flex flex-column align-content-center mt-4">
@@ -32,6 +34,9 @@
                 </div>
             </div>
             <button id="form-button" class="btn btn-primary shadow mt-4">Sign in</button>
+            <div id="app">
+                {{ message }}
+            </div>
         </div>
     </div>
 </body>
