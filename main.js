@@ -1,7 +1,7 @@
 let controller = new Vue({
     el: '#controller',
     data: {
-        sw: false
+        sw: true
     },
     methods: {
         change: function () {
