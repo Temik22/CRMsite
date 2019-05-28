@@ -59,10 +59,10 @@ Vue.component('workspace', {
 
     template: '<div @change="showScreen($event.target.ordinal)">' +
         '<tabpanel>' +
-    '<tab v-for="screen, i in $slots.screens" :ordinal="i" :name="screen.name" seen="true"></tab>' +
-            '</tabpanel>' +
-        '<slot></slot>' +
-        '<slot name="screens"></slot>' +
+        '    <tab v-for="screen, i in $slots.screens" :ordinal="i" :name="screen.name" seen="true"></tab>' +
+        '</tabpanel>' +
+        '    <slot></slot>' +
+        '    <slot name="screens"></slot>' +
         '</div>',
 
     mounted : function () {
@@ -84,7 +84,11 @@ Vue.component('workspace', {
 
 
 Vue.component('tabpanel', {
-    template: '<div style="background-color: blue"><slot></slot><p>This is tab panel</p></div>'
+    template: '<nav class="navbar navbar-expand-sm bg-primary">\n' +
+        '    <ul class="navbar-nav">\n' +
+        '        <slot></slot>\n' +
+        '    </ul>\n' +
+        '</nav>'
 });
 
 Vue.component('screen', {
@@ -96,7 +100,9 @@ Vue.component('screen', {
 Vue.component('tab', {
     props: ['name', 'seen'],
 
-    template: '<button v-if="seen" @click="click">{{name}}</button>',
+    template: '<li v-if="seen" class="nav-item">\n' + // to mark button as active class active can be added
+        '    <button class="btn btn-primary">{{name}}</button>\n' +
+        '</li>',
 
     methods : {
         click : function () {
