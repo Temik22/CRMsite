@@ -2,45 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login page</title>
+    <title>It's just a title</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://ru.vuejs.org/js/vue.js"></script>
 </head>
 <body>
-<div id="login" v-if="seen" class="main-field container bg-white shadow rounded">
-    <div class="container d-flex justify-content-center h-25">
-        <h1 class="mt-4">Login?</h1>
-    </div>
-    <div class="d-flex flex-column p-2 h-75" id="login-form" data-status="true">
-        <div class="container d-flex flex-column align-content-center mt-4">
-            <label class="pl-1" for="login-email">Login</label>
-            <input v-model="login" @input="check"
-                   class="form-control border-top-0 border-left-0 border-right-0 border-dark bg-light"
-                   id="login-email" placeholder="Enter your email"
-                   data-regexp="^[a-zA-z]+@[a-z]+\.[a-z]{1,4}$">
-            <div class="invalid-feedback">
-                Your login must be an E-Mail address
-            </div>
-        </div>
-        <div class="container d-flex flex-column align-content-center mt-4">
-            <label class="pl-1" for="login-password">Password</label>
-            <input v-model="password" @input="check"
-                   class="form-control border-right-0 border-left-0 border-top-0 border-dark bg-light"
-                   id="login-password" placeholder="Enter your password" data-regexp="^.{6,}$">
-            <div class="invalid-feedback">
-                Your password can't be shorter than 6 symbols
-            </div>
-        </div>
-        <button id="form-button" @click="send" class="btn btn-primary shadow mt-4">Sign in</button>
-    </div>
+
+<div id="app">
+    <logpage :seen="logseen"></logpage>
+    <workspace :seen="workseen">
+        <screen slot="screens" name="1" seen="false"></screen>
+        <screen slot="screens" name="2" seen="false"></screen>
+        <screen slot="screens" name="3" seen="false"></screen>
+    </workspace>
+
 </div>
-<div id="controller">
-    <button @click="change">switch</button>
-</div>
-<div id="workspace" v-if="seen">
-    <span>here must be workspace</span>
-</div>
-<script src="main.js"></script>
+
+<script src="script.js"></script>
 </body>
 </html>

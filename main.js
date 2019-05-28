@@ -5,7 +5,7 @@ let controller = new Vue({
     },
     methods: {
         change: function () {
-            if (controller.sw){
+            if (controller.sw) {
                 login.seen = !controller.sw;
                 work.seen = controller.sw;
             }
@@ -88,5 +88,4 @@ function auth(inputs) {
                 }
             }
         )
-
 }
