@@ -6,6 +6,7 @@ Vue.component('logpage', {
             password: ''
         }
     },
+
     methods:{
         check: function () {
             let inputs = document.getElementsByTagName('input');
@@ -19,6 +20,7 @@ Vue.component('logpage', {
             auth(inputs);
         }
     },
+
     template: '<div v-if="seen" class="main-field container bg-white shadow rounded">\n' +
         '    <div class="container d-flex justify-content-center h-25">\n' +
         '        <h1 class="mt-4">Login?</h1>\n' +
@@ -82,7 +84,6 @@ Vue.component('workspace', {
     }
 });
 
-
 Vue.component('tabpanel', {
     template: '<nav class="navbar navbar-expand-sm bg-primary">\n' +
         '    <ul class="navbar-nav">\n' +
@@ -112,12 +113,11 @@ Vue.component('tab', {
 
 });
 
-
 let app = new Vue({
     el: "#app",
     data:{
-        logseen: false,
-        workseen: true
+        logseen: true,
+        workseen: false
     }
 });
 
@@ -142,7 +142,6 @@ function checkInput(input) {
         }
     }
 }
-
 
 function auth(inputs) {
     let temp = [];
